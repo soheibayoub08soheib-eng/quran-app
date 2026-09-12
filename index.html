@@ -770,7 +770,8 @@
             }
 
             const rawFile = audioFileInput.files[0];
-            const audioFile = new File([rawFile], "recording.m4a", { type: "audio/mp4" })
+            const fileBuffer = await rawFile.arrayBuffer();
+            const audioFile = new Blob([fileBuffer], { type: "audio/mp4" });
             const surahName = surahNameInput.value || "غير محددة";
             const ayahFrom = ayahFromInput.value || "-";
             const ayahTo = ayahToInput.value || "-";
